@@ -1,0 +1,30 @@
+root@194-67-109-224:~# systemctl status wildfly
+● wildfly.service - The WildFly Application Server
+     Loaded: loaded (/etc/systemd/system/wildfly.service; disabled; vendor preset: enabled)
+     Active: active (running) since Wed 2021-03-10 23:54:07 MSK; 21s ago
+   Main PID: 31444 (launch.sh)
+      Tasks: 113 (limit: 1158)
+     Memory: 239.4M
+     CGroup: /system.slice/wildfly.service
+             ├─31444 /bin/bash /opt/wildfly/bin/launch.sh standalone standalone.xml 0.0.0.0 0.0.0.0
+             ├─31445 /bin/sh /opt/wildfly/bin/standalone.sh -c standalone.xml -b 0.0.0.0 -bmanagement 0.0.0.0
+             └─31544 java -D[Standalone] -server -Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true --add-exports=java.>
+
+Mar 10 23:54:07 194-67-109-224.cloudvps.regruhosting.ru systemd[1]: Started The WildFly Application Server.
+lines 1-12/12 (END)
+^C
+root@194-67-109-224:~# tail /opt/wildfly/standalone/log/server.log
+2021-03-10 23:54:16,570 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+2021-03-10 23:54:16,578 INFO  [org.jboss.as.patching] (MSC service thread 1-1) WFLYPAT0050: WildFly Preview cumulative patch ID is: base, one-off patches include: none
+2021-03-10 23:54:16,601 WARN  [org.jboss.as.domain.management.security] (MSC service thread 1-2) WFLYDM0111: Keystore /opt/wildfly/standalone/configuration/application.keystore not found, it will be auto generated on first use with a self signed certificate for host localhost
+2021-03-10 23:54:16,660 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-1) WFLYDS0013: Started FileSystemDeploymentService for directory /opt/wildfly/standalone/deployments
+2021-03-10 23:54:16,751 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) WFLYUT0006: Undertow HTTPS listener https listening on 0.0.0.0:8443
+2021-03-10 23:54:16,907 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBossWS 5.4.2.Final (Apache CXF 3.3.7)
+2021-03-10 23:54:17,162 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+2021-03-10 23:54:17,170 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Preview 22.0.1.Final (WildFly Core 14.0.1.Final) started in 9130ms - Started 306 of 547 services (347 services are lazy, passive or on-demand)
+2021-03-10 23:54:17,171 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://0.0.0.0:9990/management
+2021-03-10 23:54:17,174 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://0.0.0.0:9990
+
+
+
+

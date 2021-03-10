@@ -42,8 +42,13 @@
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
         <version>2.0.2.Final</version>
+<!--        <configuration>-->
+<!--          <hostname>194.67.109.224</hostname>-->
+<!--          <username>admin</username>-->
+<!--          <password>123456</password>-->
+<!--        </configuration>-->
       </plugin>
     </plugins>
   </build>
-
+<!--  -Dwildfly.hostname=194.67.109.224 -Dwildfly.username=admin -Dwildfly.password=123456-->
 </project>
