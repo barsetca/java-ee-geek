@@ -6,17 +6,16 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class FirstServlet implements Servlet {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(FirstServlet.class);
   private ServletConfig config;
 
   @Override
   public void init(ServletConfig config) throws ServletException {
-    LOGGER.info("Servlet initialized");
+    log.info("Servlet initialized");
     this.config = config;
   }
 
@@ -26,9 +25,11 @@ public class FirstServlet implements Servlet {
   }
 
   @Override
-  public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-    LOGGER.info("service - New Request");
+  public void service(ServletRequest req, ServletResponse res)
+      throws ServletException, IOException {
+    log.info("service - New Request");
     res.getWriter().println("<h1>Hello new deploy from my FirstServlet</h1>");
+    res.getWriter().println("<h2>Привет!!!</h2>");
   }
 
   @Override
