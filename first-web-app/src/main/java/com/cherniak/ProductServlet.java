@@ -76,6 +76,7 @@ public class ProductServlet extends HttpServlet {
       resp.getWriter().println("<p>Price: " + product.getPrice() + "</p>");
       resp.getWriter().println(
           "<td><a href='" + req.getContextPath() + req.getServletPath() + "'>Показать все продукты</a></td>");
+      resp.getWriter().println("<p>Из другой ветки</p>");
       resp.setStatus(HttpServletResponse.SC_OK);
     } catch (NumberFormatException e) {
       log.info("Incorrect format id. Id must be number, but id = {}", idPath);
