@@ -26,6 +26,13 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -40,6 +47,8 @@
         <version>1.18.18</version>
         <scope>provided</scope>
       </dependency>
+
+
 
   </dependencies>
 

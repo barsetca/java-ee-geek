@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
-@WebServlet(urlPatterns = "/product/*")
+//@WebServlet(urlPatterns = "/product/*")
 @Slf4j
 public class ProductServlet extends HttpServlet {
 
