@@ -24,6 +24,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -62,6 +63,10 @@
                                 <td>
                                         <%--                        <%= product.getDescription() %>--%>
                                     <c:out value="${product.description}"/>
+                                </td>
+                                <td>
+                                        <%--                        <%= product.getPrice() %>--%>
+                                    <c:out value="${product.price}"/>
                                 </td>
                                 <td>
                                     <c:url value="/product/${product.id}" var="productUrl"/>
