@@ -13,8 +13,8 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <!-- TODO добавить переход на форму нового продукта -->
-            <a class="btn btn-primary" href="#">Add Product</a>
+            <c:url value="/product/new" var="addProductUrl"/>
+            <a class="btn btn-primary" href="${addProductUrl}">Add Product</a>
         </div>
 
         <div class="col-12">
