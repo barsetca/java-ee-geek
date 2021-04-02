@@ -13,8 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 public class AccessDeniedServlet extends HttpServlet {
 
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-   log.info("Access denied servlet");
-   resp.getWriter().println("<h1>Access denied</h1>");
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+      throws ServletException, IOException {
+    log.info("Access denied servlet");
+    resp.getWriter().println("<h1>Access denied</h1>");
   }
 }

@@ -10,18 +10,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <c:url value="/product" var="productUrl"/>
+                <c:url value="/product/" var="productUrl"/>
                 <a class="nav-link" href="${productUrl}">Product</a>
             </li>
 
             <!-- TODO при переходе по ссылкам должен открываться список категорий или клиентов -->
 
             <li class="nav-item active">
-                <c:url value="/category" var="categoryUrl"/>
+                <c:url value="/category/" var="categoryUrl"/>
                 <a class="nav-link" href="${categoryUrl}">Category</a>
             </li>
             <li class="nav-item active">
-                <c:url value="/customer" var="customerUrl"/>
+                <c:url value="/customer/" var="customerUrl"/>
                 <a class="nav-link" href="${customerUrl}">Customer</a>
             </li>
         </ul>
