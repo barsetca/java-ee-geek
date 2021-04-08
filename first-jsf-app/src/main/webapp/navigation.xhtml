@@ -1,0 +1,25 @@
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pp="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h3><h:link styleClass="nav-link" value="#{title}" outcome="#{path}"/></h3>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <h:link styleClass="nav-link" value="Category" outcome="/category"/>
+            </li>
+            <li class="nav-item active">
+                <h:link styleClass="nav-link" value="Product" outcome="/product"/>
+            </li>
+            <li class="nav-item active">
+                <h:link styleClass="nav-link" value="Customer" outcome="/customer"/>
+            </li>
+        </ul>
+    </div>
+</nav>
+</ui:composition>
+</html>

@@ -1,0 +1,56 @@
+<html lang="en"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pp="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:include src="head.xhtml" />
+
+<h:body>
+
+  <ui:insert name="header" >
+    <ui:include src="navigation.xhtml">
+      <ui:param name="title" value="Category" />
+      <ui:param name="path" value="/category" />
+    </ui:include>
+  </ui:insert>
+
+  <div class="container">
+    <div class="row py-2">
+      <h:form id="categoryTableForm">
+        <div class="col-12">
+          <h:commandButton value="Add Category" styleClass="btn btn-success"
+                           action="#{categoryController.addCategory()}"/>
+        </div>
+
+        <div class="col-12">
+          <h:dataTable value="#{categoryController.findAll()}" var="category"
+                       styleClass="table table-bordered my-2">
+            <h:column>
+              <f:facet name="header">Id</f:facet>
+              #{category.id}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Name</f:facet>
+              #{category.name}
+            </h:column>
+            <h:column>
+              <f:facet name="header">Actions</f:facet>
+
+              <h:commandButton value="Edit" styleClass="btn btn-success"
+                               action="#{categoryController.editCategory(category)}"/>
+              <h:commandButton value="Delete" styleClass="btn btn-danger"
+                               action="#{categoryController.deleteCategory(category)}">
+                <f:ajax event="click" render="categoryTableForm"/>
+              </h:commandButton>
+            </h:column>
+          </h:dataTable>
+
+        </div>
+      </h:form>
+    </div>
+
+  </div>
+  <ui:include src="scripts.xhtml" />
+</h:body>
+</html>
