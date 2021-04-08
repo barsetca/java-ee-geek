@@ -7,6 +7,8 @@
 <ui:include src="head.xhtml" />
 
 <h:body>
+  <f:event listener="#{productController.preloadData}" type="preRenderView"/>
+
   <ui:insert name="header" >
     <ui:include src="navigation.xhtml">
       <ui:param name="title" value="Product" />
@@ -44,10 +46,11 @@
             <h:column>
               <f:facet name="header">Actions</f:facet>
 
-              <h:commandButton value="Edit" type="button" styleClass="btn btn-success"
+              <h:commandButton value="Edit" styleClass="btn btn-success"
                                action="#{productController.editProduct(product)}"/>
               <h:commandButton value="Delete" type="button" styleClass="btn btn-danger"
                                action="#{productController.deleteProduct(product)}">
+
                 <f:ajax event="click" render="productTableForm"/>
               </h:commandButton>
 

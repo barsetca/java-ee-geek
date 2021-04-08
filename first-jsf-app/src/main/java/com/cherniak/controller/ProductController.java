@@ -5,6 +5,7 @@ import com.cherniak.persist.ProductRepository;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,6 +18,12 @@ public class ProductController implements Serializable {
 
   private Product product;
 
+  private List<Product> productList;
+
+  public void preloadData(ComponentSystemEvent componentSystemEvent) {
+    this.productList = productRepository.findAll();
+  }
+
   public Product getProduct() {
     return product;
   }
@@ -26,7 +33,7 @@ public class ProductController implements Serializable {
   }
 
   public List<Product> findAll() {
-    return productRepository.findAll();
+    return productList;
   }
 
   public String editProduct(Product product) {
