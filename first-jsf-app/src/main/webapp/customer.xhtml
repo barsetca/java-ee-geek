@@ -6,6 +6,9 @@
 <ui:include src="head.xhtml" />
 
 <h:body>
+
+    <f:event listener="#{customerController.preloadData}" type="preRenderView"/>
+
     <ui:insert name="header">
         <ui:include src="navigation.xhtml">
             <ui:param name="title" value="Customer"/>

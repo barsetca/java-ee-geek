@@ -2,9 +2,11 @@ package com.cherniak.controller;
 
 import com.cherniak.persist.Customer;
 import com.cherniak.persist.CustomerRepository;
+import com.cherniak.persist.Product;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,6 +19,12 @@ public class CustomerController implements Serializable {
 
   private Customer customer;
 
+  private List<Customer> customerList;
+
+  public void preloadData(ComponentSystemEvent componentSystemEvent) {
+    this.customerList = customerRepository.findAll();
+  }
+
   public Customer getCustomer() {
     return customer;
   }
@@ -26,7 +34,7 @@ public class CustomerController implements Serializable {
   }
 
   public List<Customer> findAll() {
-    return customerRepository.findAll();
+    return customerList;
   }
 
   public String editCustomer(Customer customer) {

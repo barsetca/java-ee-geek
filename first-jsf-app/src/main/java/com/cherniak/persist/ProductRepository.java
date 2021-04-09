@@ -2,9 +2,6 @@ package com.cherniak.persist;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
@@ -24,11 +21,6 @@ public class ProductRepository {
 
   @Resource
   private UserTransaction ut;
-
-
-  private final Map<Long, Product> productMap = new ConcurrentHashMap<>();
-
-  private final AtomicLong identity = new AtomicLong(0);
 
   @PostConstruct
   public void init() {
