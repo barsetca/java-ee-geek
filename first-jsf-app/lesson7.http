@@ -1,0 +1,191 @@
+http://194.67.109.224:8080/first-jsf-app/
+
+###
+
+GET http://194.67.109.224:8080/first-jsf-app/api/v1/product
+
+###
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; charset=UTF-8
+Content-Length: 381
+Date: Fri, 23 Apr 2021 14:46:21 GMT
+
+[
+{
+"description": "Description 1",
+"id": 1,
+"name": "Product 1",
+"price": 100.00
+},
+{
+"description": "Description 2",
+"id": 2,
+"name": "Product 2",
+"price": 200.00
+},
+{
+"description": "Description 3",
+"id": 3,
+"name": "Product 3",
+"price": 300.00
+},
+{
+"description": "Description 4",
+"id": 4,
+"name": "Продукт 4",
+"price": 400.00
+},
+{
+"description": "фывфывфы",
+"id": 5,
+"name": "ыфвфывф",
+"price": 112.00
+}
+]
+
+###
+
+DELETE http://194.67.109.224:8080/first-jsf-app/api/v1/product/5
+
+###
+HTTP/1.1 204 No Content
+Content-Type: text/html;charset=UTF-8
+Date: Fri, 23 Apr 2021 14:51:55 GMT
+
+<Response body is empty>
+
+###
+GET http://194.67.109.224:8080/first-jsf-app/api/v1/product
+
+###
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; charset=UTF-8
+Content-Length: 300
+Date: Fri, 23 Apr 2021 14:53:04 GMT
+
+[
+  {
+    "description": "Description 1",
+    "id": 1,
+    "name": "Product 1",
+    "price": 100.00
+  },
+  {
+    "description": "Description 2",
+    "id": 2,
+    "name": "Product 2",
+    "price": 200.00
+  },
+  {
+    "description": "Description 3",
+    "id": 3,
+    "name": "Product 3",
+    "price": 300.00
+  },
+  {
+    "description": "Description 4",
+    "id": 4,
+    "name": "Продукт 4",
+    "price": 400.00
+  }
+]
+
+###
+
+PUT http://194.67.109.224:8080/first-jsf-app/api/v1/product
+Content-Type: application/json
+
+{
+  "id": 4,
+  "description": "Description 2222",
+  "name": "Product REST 2222",
+  "price": 102.00,
+  "categoryId": 1
+}
+
+###
+PUT http://194.67.109.224:8080/first-jsf-app/api/v1/product
+
+HTTP/1.1 204 No Content
+Content-Type: text/html;charset=UTF-8
+Date: Fri, 23 Apr 2021 14:54:22 GMT
+
+<Response body is empty>
+
+Response code: 204 (No Content); Time: 164ms; Content length: 0 bytes
+
+###
+
+POST  http://194.67.109.224:8080/first-jsf-app/api/v1/product
+Content-Type: application/json
+
+{
+  "description": "Description 2",
+  "name": "Product REST 2",
+  "price": 102.00,
+  "categoryId": 1
+}
+
+###
+
+HTTP/1.1 204 No Content
+Content-Type: text/html;charset=UTF-8
+Date: Fri, 23 Apr 2021 14:55:41 GMT
+
+<Response body is empty>
+
+###
+
+GET http://194.67.109.224:8080/first-jsf-app/api/v1/product
+
+###
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; charset=UTF-8
+Content-Length: 382
+Date: Fri, 23 Apr 2021 14:56:38 GMT
+
+[
+  {
+    "description": "Description 1",
+    "id": 1,
+    "name": "Product 1",
+    "price": 100.00
+  },
+  {
+    "description": "Description 2",
+    "id": 2,
+    "name": "Product 2",
+    "price": 200.00
+  },
+  {
+    "description": "Description 3",
+    "id": 3,
+    "name": "Product 3",
+    "price": 300.00
+  },
+  {
+    "description": "Description 2222",
+    "id": 4,
+    "name": "Product REST 2222",
+    "price": 102.00
+  },
+  {
+    "description": "Description 2",
+    "id": 6,
+    "name": "Product REST 2",
+    "price": 102.00
+  }
+]
+
+###
+
+
+
+
+
+

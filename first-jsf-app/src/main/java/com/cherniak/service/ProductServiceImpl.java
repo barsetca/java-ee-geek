@@ -3,6 +3,7 @@ package com.cherniak.service;
 import com.cherniak.persist.CategoryRepository;
 import com.cherniak.persist.Product;
 import com.cherniak.persist.ProductRepository;
+import com.cherniak.rest.ProductResource;
 import com.cherniak.service.repr.ProductRepr;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +14,7 @@ import javax.ejb.TransactionAttribute;
 
 @Stateless
 @Remote(ProductServiceRemote.class)
-public class ProductServiceImpl implements ProductService, ProductServiceRemote {
+public class ProductServiceImpl implements ProductService, ProductServiceRemote, ProductResource {
 
   @EJB
   private ProductRepository productRepository;
@@ -36,6 +37,22 @@ public class ProductServiceImpl implements ProductService, ProductServiceRemote 
   @TransactionAttribute
   public void delete(Long id) {
     productRepository.delete(id);
+  }
+
+  @Override
+  public void insert(ProductRepr productRepr) {
+    if (productRepr.getId() != null) {
+      throw new IllegalArgumentException("Not null id in the inserted Product");
+    }
+    save(productRepr);
+  }
+
+  @Override
+  public void update(ProductRepr productRepr) {
+    if (productRepr.getId() == null) {
+      throw new IllegalArgumentException("Null id in the inserted Product");
+    }
+    save(productRepr);
   }
 
   @Override
