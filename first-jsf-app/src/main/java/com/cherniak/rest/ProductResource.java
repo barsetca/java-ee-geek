@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Local
@@ -37,4 +38,15 @@ public interface ProductResource {
   @DELETE
   @Path("/{id}")
   void delete(@PathParam("id") Long id);
+
+  @GET
+  @Path("/by_name")
+  @Produces(MediaType.APPLICATION_JSON)
+  ProductRepr findByName(@QueryParam("name") String name);
+
+  @GET
+  @Path("/by_category_id")
+  @Produces(MediaType.APPLICATION_JSON)
+  List<ProductRepr> findAllByCategoryIdFetch(@QueryParam("category_id") Long categoryId);
+
 }

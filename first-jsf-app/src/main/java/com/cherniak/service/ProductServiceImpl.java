@@ -40,6 +40,11 @@ public class ProductServiceImpl implements ProductService, ProductServiceRemote,
   }
 
   @Override
+  public ProductRepr findByName(String name) {
+    return createProductReprWithCategory(productRepository.findByName(name));
+  }
+
+  @Override
   public void insert(ProductRepr productRepr) {
     if (productRepr.getId() != null) {
       throw new IllegalArgumentException("Not null id in the inserted Product");
@@ -70,6 +75,14 @@ public class ProductServiceImpl implements ProductService, ProductServiceRemote,
   @Override
   public List<ProductRepr> findAllWithCategoryFetch() {
     return productRepository.findAllWithCategoryFetch().stream()
+        .map(ProductServiceImpl::createProductReprWithCategory)
+        .collect(Collectors.toList());
+  }
+
+
+  @Override
+  public List<ProductRepr> findAllByCategoryIdFetch(Long categoryId) {
+    return productRepository.findAllByCategoryIdFetch(categoryId).stream()
         .map(ProductServiceImpl::createProductReprWithCategory)
         .collect(Collectors.toList());
   }
