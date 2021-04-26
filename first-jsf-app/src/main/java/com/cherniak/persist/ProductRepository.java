@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -12,36 +13,11 @@ import javax.transaction.SystemException;
 import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 
-@ApplicationScoped
-@Named
+@Stateless
 public class ProductRepository {
 
   @PersistenceContext(unitName = "ds")
   private EntityManager em;
-
-  @Resource
-  private UserTransaction ut;
-
-  @PostConstruct
-  public void init() {
-    if (count() == 0) {
-      try {
-        ut.begin();
-        save(new Product(null, "Product 1", "Description 1", new BigDecimal(100)));
-        save(new Product(null, "Product 2", "Description 2", new BigDecimal(200)));
-        save(new Product(null, "Product 3", "Description 3", new BigDecimal(300)));
-        save(new Product(null, "Продукт 4", "Description 4", new BigDecimal(400)));
-        ut.commit();
-      } catch (Exception ex) {
-        try {
-          ut.rollback();
-        } catch (SystemException exx) {
-          throw new RuntimeException(exx);
-        }
-        throw new RuntimeException(ex);
-      }
-    }
-  }
 
   @Transactional
   public void save(Product product) {
@@ -67,7 +43,13 @@ public class ProductRepository {
         .getResultList();
   }
 
+  public List<Product> findAllWithCategoryFetch() {
+    return em.createNamedQuery("findAllWithCategoryFetch", Product.class)
+        .getResultList();
+  }
+
   public long count() {
+
     return em.createNamedQuery("count", Long.class).getSingleResult();
   }
 }
