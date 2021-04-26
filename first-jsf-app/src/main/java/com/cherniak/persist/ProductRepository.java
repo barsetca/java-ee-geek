@@ -1,17 +1,9 @@
 package com.cherniak.persist;
 
-import java.math.BigDecimal;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.SystemException;
-import javax.transaction.Transactional;
-import javax.transaction.UserTransaction;
 
 @Stateless
 public class ProductRepository {
@@ -19,7 +11,7 @@ public class ProductRepository {
   @PersistenceContext(unitName = "ds")
   private EntityManager em;
 
-  @Transactional
+
   public void save(Product product) {
     if (product.getId() == null) {
       em.persist(product);
@@ -27,7 +19,7 @@ public class ProductRepository {
     em.merge(product);
   }
 
-  @Transactional
+
   public void delete(Long id) {
     em.createNamedQuery("deleteProductById")
         .setParameter("id", id)
@@ -38,8 +30,20 @@ public class ProductRepository {
     return em.find(Product.class, id);
   }
 
+  public Product findByName(String name) {
+    return em.createNamedQuery("findProductByName", Product.class)
+        .setParameter("name", name)
+        .getSingleResult();
+  }
+
   public List<Product> findAll() {
     return em.createNamedQuery("findAllProduct", Product.class)
+        .getResultList();
+  }
+
+  public List<Product> findAllByCategoryIdFetch(Long categoryId) {
+    return em.createNamedQuery("findAllProductByCategoryIdFetch", Product.class)
+        .setParameter("category_id", categoryId)
         .getResultList();
   }
 

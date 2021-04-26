@@ -23,6 +23,8 @@ import lombok.NoArgsConstructor;
 @NamedQueries({
     @NamedQuery(name = "deleteProductById", query = "delete from Product p where p.id = :id"),
     @NamedQuery(name = "findAllProduct", query = "select p from Product p"),
+    @NamedQuery(name = "findAllProductByCategoryIdFetch", query = "select p from Product p left join fetch p.category where p.category.id = :category_id"),
+    @NamedQuery(name = "findProductByName", query = "select p from Product p where p.name = :name"),
     @NamedQuery(name = "count", query = "select count(p) from Product p"),
     @NamedQuery(name = "findAllWithCategoryFetch", query = "select p from Product p left join fetch p.category")
 })

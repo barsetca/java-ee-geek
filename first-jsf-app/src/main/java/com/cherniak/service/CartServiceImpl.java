@@ -2,11 +2,9 @@ package com.cherniak.service;
 
 import com.cherniak.service.repr.ProductRepr;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 import javax.ejb.Stateful;
 
 @Stateful
@@ -26,6 +24,6 @@ public class CartServiceImpl implements CartService {
 
   @Override
   public List<ProductRepr> findAll() {
-     return new ArrayList<>(productMap.values());
+    return new ArrayList<>(productMap.values());
   }
 }

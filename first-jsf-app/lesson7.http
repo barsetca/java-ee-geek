@@ -13,36 +13,36 @@ Content-Length: 381
 Date: Fri, 23 Apr 2021 14:46:21 GMT
 
 [
-{
-"description": "Description 1",
-"id": 1,
-"name": "Product 1",
-"price": 100.00
-},
-{
-"description": "Description 2",
-"id": 2,
-"name": "Product 2",
-"price": 200.00
-},
-{
-"description": "Description 3",
-"id": 3,
-"name": "Product 3",
-"price": 300.00
-},
-{
-"description": "Description 4",
-"id": 4,
-"name": "Продукт 4",
-"price": 400.00
-},
-{
-"description": "фывфывфы",
-"id": 5,
-"name": "ыфвфывф",
-"price": 112.00
-}
+  {
+    "description": "Description 1",
+    "id": 1,
+    "name": "Product 1",
+    "price": 100.00
+  },
+  {
+    "description": "Description 2",
+    "id": 2,
+    "name": "Product 2",
+    "price": 200.00
+  },
+  {
+    "description": "Description 3",
+    "id": 3,
+    "name": "Product 3",
+    "price": 300.00
+  },
+  {
+    "description": "Description 4",
+    "id": 4,
+    "name": "Продукт 4",
+    "price": 400.00
+  },
+  {
+    "description": "фывфывфы",
+    "id": 5,
+    "name": "ыфвфывф",
+    "price": 112.00
+  }
 ]
 
 ###
@@ -184,8 +184,97 @@ Date: Fri, 23 Apr 2021 14:56:38 GMT
 
 ###
 
+###
 
+GET http://194.67.109.224:8080/first-jsf-app/api/v1/product/3
 
+###
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; charset=UTF-8
+Content-Length: 115
+Date: Fri, 23 Apr 2021 15:09:20 GMT
 
+{
+  "categoryId": 1,
+  "categoryName": "Category 1",
+  "description": "Description 3",
+  "id": 3,
+  "name": "Product 3",
+  "price": 300.00
+}
 
+###
 
+ GET http://194.67.109.224:8080/first-jsf-app/api/v1/category
+
+###
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; charset=UTF-8
+Content-Length: 85
+Date: Fri, 23 Apr 2021 17:45:57 GMT
+
+[
+  {
+    "id": 1,
+    "name": "Category1"
+  },
+  {
+    "id": 2,
+    "name": "Category2"
+  },
+  {
+    "id": 3,
+    "name": "Category3"
+  }
+]
+
+###
+
+POST http://194.67.109.224:8080/first-jsf-app/api/v1/category
+Content-Type: application/json
+
+{
+  "name": "Category4"
+}
+
+###
+HTTP/1.1 204 No Content
+Content-Type: text/html;charset=UTF-8
+Date: Fri, 23 Apr 2021 17:50:01 GMT
+
+<Response body is empty>
+
+###
+
+ GET http://194.67.109.224:8080/first-jsf-app/api/v1/category
+
+###
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; charset=UTF-8
+Content-Length: 113
+Date: Fri, 23 Apr 2021 17:50:51 GMT
+
+[
+  {
+    "id": 1,
+    "name": "Category1"
+  },
+  {
+    "id": 2,
+    "name": "Category2"
+  },
+  {
+    "id": 3,
+    "name": "Category3"
+  },
+  {
+    "id": 4,
+    "name": "Category4"
+  }
+]
+
+###

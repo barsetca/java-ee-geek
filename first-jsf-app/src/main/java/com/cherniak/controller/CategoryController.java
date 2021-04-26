@@ -2,19 +2,18 @@ package com.cherniak.controller;
 
 import com.cherniak.persist.Category;
 import com.cherniak.persist.CategoryRepository;
-import com.cherniak.persist.Product;
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @SessionScoped
 @Named
 public class CategoryController implements Serializable {
 
-  @Inject
+  @EJB
   private CategoryRepository categoryRepository;
 
   private Category category;
