@@ -1,45 +1,58 @@
 package com.cherniak.persist;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.SystemException;
+import javax.transaction.Transactional;
+import javax.transaction.UserTransaction;
 
-@ApplicationScoped
-@Named
+@Stateless
 public class CategoryRepository {
 
-  private final Map<Long, Category> categoryMap = new ConcurrentHashMap<>();
+  @PersistenceContext(unitName = "ds")
+  private EntityManager em;
 
-  private final AtomicLong identity = new AtomicLong(0);
-
-  @PostConstruct
-  public void init() {
-    save(new Category(null, "Category1"));
-    save(new Category(null, "Category2"));
-    save(new Category(null, "Category3"));
-  }
-
+  @TransactionAttribute
   public void save(Category category) {
     if (category.getId() == null) {
-      category.setId(identity.incrementAndGet());
+      em.persist(category);
     }
-    categoryMap.put(category.getId(), category);
+    em.merge(category);
   }
 
+  @TransactionAttribute
   public void delete(Long id) {
-    categoryMap.remove(id);
+    em.createNamedQuery("deleteCategoryById")
+        .setParameter("id", id)
+        .executeUpdate();
   }
 
   public Category findById(Long id) {
-    return categoryMap.get(id);
+    return em.find(Category.class, id);
   }
 
   public List<Category> findAll() {
-    return new ArrayList<>(categoryMap.values());
+    return em.createNamedQuery("findAllCategory", Category.class)
+        .getResultList();
   }
+
+  public Long countAll() {
+    return em.createNamedQuery("countCategories", Long.class)
+        .getSingleResult();
+  }
+
+  public Category getReference(Long id) {
+    return em.getReference(Category.class, id);
+  }
+
 }
