@@ -14,6 +14,7 @@
     <ui:include src="navigation.xhtml">
       <ui:param name="title" value="Category" />
       <ui:param name="path" value="/category" />
+      <ui:param name="pageName" value="Product"/>
     </ui:include>
   </ui:insert>
 
@@ -21,7 +22,7 @@
     <div class="row py-2">
       <h:form id="categoryTableForm">
         <div class="col-12">
-          <h:commandButton value="Add Category" styleClass="btn btn-success"
+          <h:commandButton value="Add Category" styleClass="btn btn-success" rendered="#{request.isUserInRole('ADMIN')}"
                            action="#{categoryController.addCategory()}"/>
         </div>
 
@@ -39,9 +40,9 @@
             <h:column>
               <f:facet name="header">Actions</f:facet>
 
-              <h:commandButton value="Edit" styleClass="btn btn-success"
+              <h:commandButton value="Edit" styleClass="btn btn-success" rendered="#{request.isUserInRole('ADMIN')}"
                                action="#{categoryController.editCategory(category)}"/>
-              <h:commandButton value="Delete" styleClass="btn btn-danger"
+              <h:commandButton value="Delete" styleClass="btn btn-danger" rendered="#{request.isUserInRole('ADMIN')}"
                                action="#{categoryController.deleteCategory(category)}">
                 <f:ajax event="click" render="categoryTableForm"/>
               </h:commandButton>
